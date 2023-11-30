@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser');
 /* MongoDB Connection */
 const username = "admin"
 const password = "TK8e3chd5eTWeBbj"
-const cluster = "firstApp"
+const cluster = "firstapp.bcvcknj"
 const dbname = ""; // Defaults to "test" if left blank
 
 const uri = `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/${dbname}?retryWrites=true&w=majority`;
@@ -39,6 +39,10 @@ app.use(cookieParser());
 app.use(session({ secret: "Dragon" }));
 
 /* Routing Setup */
+const homePage = require('./routes/homePage.js');
+app.use('/', homePage);
+const login = require('./routes/login.js');
+app.use('/login', login);
 
 // Error 404 **OTHER ROUTES MUST COME BEFORE THIS**
 app.get('*', (req, res) => {
