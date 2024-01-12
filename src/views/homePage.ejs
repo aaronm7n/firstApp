@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Aaron McClellan">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/css/homePage.css"/> <!-- This allows the use of CSS -->
+        <title>Home Page</title>
+    </head>
+    <body>
+        <nav>
+            <h1>Welcome to |PLACEHOLDER|</h1>
+            <div id="nav-buttons">
+                <a href="/login">Login</a>
+                <a href="/signup">Signup</a>
+            </div>
+        </nav>
+        <ul id="messages"></ul>
+        <form id="form">
+            <input id="input" autocomplete="off"/><button>Send</button>
+        </form>
+        <script src="/node_modules/socket.io/client-dist/socket.io.js"></script>
+        <script src="/firstApp/src/public/javascript/homePageClient.js"></script>
+    </body>
+</html>

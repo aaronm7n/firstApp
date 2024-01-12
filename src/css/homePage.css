@@ -1,0 +1,70 @@
+body {
+    background-color: darkslategray;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-image: linear-gradient(darkcyan, darkslategray);
+}
+
+nav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: right;
+    text-decoration: none;
+    font-size: 12px;
+    margin-left: 10px;
+    padding-bottom: 25px;
+}
+
+h1 {
+    padding-bottom: 25px;
+}
+
+a {
+
+}
+
+#form {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3rem;
+    background-color: gray;
+
+}
+#form > button {
+    
+}
+
+#input {
+    border: none;
+    padding: 0 1rem;
+    flex-grow: 1;
+    border-radius: 0.75rem;
+    margin: 0.25rem;
+    background-color: darkolivegreen;
+}
+#input:focus {
+    outline: none;
+}
+
+#messages {
+
+}
+#messages > li {
+
+}
+#messages > li:nth-child(odd) {
+
+}

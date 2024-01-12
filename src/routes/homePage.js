@@ -3,7 +3,7 @@ const router = express.Router();
 
 /* Home Page GET Request */
 router.get('/', async (req, res) => {
-    res.render('homePage');
+    res.render('homePage.ejs');
 });
 
 // Must export router to be used in index.js

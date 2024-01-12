@@ -3,9 +3,13 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const multer = require('multer');
-const upload = multer();
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const emoji = require('node-emoji');
+const httpServer = require('http').createServer(app);
+const io = require('socket.io')(httpServer, {});
+const upload = multer();
+
 
 /* MongoDB Connection */
 const username = "admin"
@@ -27,7 +31,7 @@ db.once("open", () => {
 });
 
 /* Views Setup */
-app.set('view engine', 'pug'); // Allows for the use of pug
+app.set('view engine', 'ejs'); // Allows for the use of ejs
 app.set('views', './views');
 app.use('/css', express.static('css')); // Allows for the use of css
 
@@ -50,10 +54,17 @@ app.get('*', (req, res) => {
 });
 
 /* Socket.io Initialization */
+io.on('connection', async (socket) => {
+    console.log('A User has connected'); // Logs when a user has connected to a socket
+
+    /* Disconnect Event */
+    socket.on('disconnect', () => {
+        console.log('A User has disconnected');
+    });
+});
 
 /* PORT Setup */
 const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-    console.log(`Application listening on port: ${port}`);
+httpServer.listen(port, () => {
+    console.log(`Server running on https://localhost:${port}`);
 });
