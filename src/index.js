@@ -45,8 +45,8 @@ app.use(session({ secret: "Dragon" }));
 /* Routing Setup */
 const homePage = require('./routes/homePage.js');
 app.use('/', homePage);
-const login = require('./routes/login.js');
-app.use('/login', login);
+const signup = require('./routes/signup.js');
+app.use('/signup', signup);
 
 // Error 404 **OTHER ROUTES MUST COME BEFORE THIS**
 app.get('*', (req, res) => {
