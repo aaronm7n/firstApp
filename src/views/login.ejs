@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Aaron McClellan">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/css/login.css"> <!-- This allows the use of CSS -->
+        <title>Login</title>
+    </head>
+    <body>
+        <% if (message) %>
+            <h4><%= message %></h4>
+        <form id="form" action="/login" method="POST">
+            <h1>Login</h1>
+            <input name="email" type="email" autocomplete="off" required placeholder="Email">
+            <input name="password" type="password" autocomplete="off" required placeholder="Password">
+            <button type="submit">Login</button>
+        </form>
+        <h2>Not a Registered User? Signup here!</h2>
+        <a href="/signup">Signup</a>
+    </body>
+</html>

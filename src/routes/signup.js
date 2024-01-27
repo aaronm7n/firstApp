@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const crypto = require('crypto'); // This is for assigning a random identification number
 const salt = bcrypt.genSaltSync(10);
 
 const User = require('../models/user');
@@ -18,7 +17,7 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
     var userInfo = await req.body; // Gets the parsed information
     
-    if (!userInfo.username || !userInfo.password) { //If not all fields have been filled out will throw error
+    if (!userInfo.username || !userInfo.password || !userInfo.email) { //If not all fields have been filled out will throw error
         res.render('signup.ejs', {
             message: "Please fill out all required fields of information.",
             type: "error"
@@ -30,16 +29,16 @@ router.post('/', async (req, res) => {
             type: "error"
         });
     }
-    else if (await User.findOne({ username: userInfo.username })) {
+    else if (await User.findOne({ email: userInfo.email })) {
         res.render('signup.ejs', {
-            message: "This username is taken. Please try again.",
+            message: "This email is already in use. Please try again.",
             type: "error"
         });
     }
     else {
         var hashed = await bcrypt.hashSync(userInfo.password, salt);
         var newUser = new User({
-            idNumber: crypto.randomUUID(),
+            email: userInfo.email,
             username: userInfo.username,
             password: hashed,
         });

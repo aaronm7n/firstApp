@@ -47,6 +47,8 @@ const homePage = require('./routes/homePage.js');
 app.use('/', homePage);
 const signup = require('./routes/signup.js');
 app.use('/signup', signup);
+const login = require('./routes/login.js');
+app.use('/login', login);
 
 // Error 404 **OTHER ROUTES MUST COME BEFORE THIS**
 app.get('*', (req, res) => {
